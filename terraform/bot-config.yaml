@@ -1,0 +1,58 @@
+name: my-bot
+
+modes:
+  send_cool_pics:
+    function: tweet_images
+    config:
+      images:
+        path: bot_images/cool
+      tweets:
+        - Check out this cool pic 😎
+
+  reply_to_friends:
+    function: reply
+    config:
+      tweets:
+        - 100% agree 💙
+        - I miss you
+    recipients:
+      - BoJackHorseman
+
+  reply_to_idiots:
+    function: reply
+    config:
+      tweets:
+        - Are your parents cousins?
+        - You are an embarrassment
+    recipients:
+      - DonaldJTrumpJr
+
+  retweet:
+    function: retweet
+    recipients:
+      - dril
+      - Coldwar_Steve
+    rate_limit:
+      type: per_recipient
+      time: 3d
+
+  like_tweets:
+    function: like
+    recipients:
+      - NASAPersevere
+      - archillect
+      - horse_ebooks
+    rate_limit:
+      type: per_recipient
+      time: 2d
+
+  existential_quotes:
+    function: tweet
+    config:
+      tweets:
+        - There is scarcely any passion without struggle - Albert Camus
+        - One repays a teacher badly if one always remains nothing but a pupil - Friedrich Nietzsche
+        - I took a test in Existentialism. I left all the answers blank and got 100 - Woody Allen
+    rate_limit:
+      type: per_mode
+      time: 3d

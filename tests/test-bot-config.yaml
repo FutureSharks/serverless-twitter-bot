@@ -1,0 +1,68 @@
+name: test-bot
+
+modes:
+  test_mode_1:
+    function: quotes
+    config:
+      authors:
+        - author1
+        - author2
+      quotes:
+        - quote1
+        - quote2
+    rate_limit:
+      type: per_mode
+      time: 1d
+
+  test_mode_2:
+    function: like
+    recipients:
+      - user1
+      - user2
+      - user3
+
+  test_mode_3:
+    function: retweet
+    recipients:
+      - user4
+      - user5
+      - user6
+    recipient_choice:
+      random: 2
+    rate_limit:
+      type: per_recipient
+      time: 2d
+
+  test_mode_4:
+    function: like
+    recipients:
+      - user7
+      - user8
+      - user9
+    recipient_choice:
+      random: 2
+    rate_limit:
+      type: per_recipient
+      time: 3d
+      time_fuzz: 6h
+
+  test_mode_5:
+    function: tweet
+    config:
+      tweets:
+        - one
+        - two
+    rate_limit:
+      type: per_mode
+      time: 10d
+      time_fuzz: 12h
+
+  test_mode_6:
+    function: tweet
+    config:
+      tweets:
+        - one
+        - two
+    rate_limit:
+      type: per_mode
+      time: 5h
