@@ -2,7 +2,7 @@
 
 [![](img/aws-lambda-logo.jpg)](#) [![](img/twitter-logo.png)](#)
 
-A Twitter bot that runs on AWS Lambda. The bot has a number of functions, called "modes", that can do the following actions:
+A Twitter bot written in Python that runs on AWS Lambda. The bot has a number of functions, called "modes", that can do the following actions:
 
 - Like tweets from a list of users
 - Retweet tweets from a list of users
@@ -17,6 +17,7 @@ Other features:
 - Images used in replies can be stored on S3 or locally
 - Mode can save their own state to persist data after each run
 - Rate limiting for the bot, per mode or per user interaction
+- Can also just be run locally
 - Written in Python 3
 - Detailed logging
 
