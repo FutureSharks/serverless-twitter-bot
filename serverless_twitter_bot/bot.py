@@ -7,9 +7,9 @@ import logging
 import yaml
 import datetime
 import random
+import serverless_twitter_bot
 from botocore.exceptions import ClientError
 from mergedeep import merge
-from serverless_twitter_bot import State
 from .twitter import Twitter
 
 
@@ -27,7 +27,7 @@ class Bot(object):
         with open(self.config_file, 'r') as stream:
             self.config = yaml.safe_load(stream)
 
-        self.state = State(self.config["modes"].keys())
+        self.state = serverless_twitter_bot.State(self.config["modes"].keys())
         self.rate_limited = self.state.bot_rate_limited(self.config.get("rate_limit"))
         logger.info(f"Config and state loaded for bot {self.config['name']}")
 
@@ -76,7 +76,7 @@ class Bot(object):
                 logger.info(f'Mode {mode_name} is rate limited')
                 continue
 
-            mode_object = getattr(__import__(f'bot_functions.{mode_options["function"]}'), mode_options["function"])
+            mode_object = getattr(serverless_twitter_bot.bot_functions, mode_options["function"])
             self.state.update_mode_last_run(mode_name, rate_limit_config["time_fuzz"])
 
             if "recipients" in mode_options:
