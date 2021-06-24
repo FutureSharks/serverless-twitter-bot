@@ -25,7 +25,7 @@ jobs:
         PYTHONIOENCODING: 'utf-8'
         GIT_ASK_YESNO: 'false'
       run: |
-        pip3 install -r requirements
+        pip3 install -r requirements.txt
     - name: Run tests
       env:
         PIPENV_DEFAULT_PYTHON_VERSION: ${{ matrix.python-version }}
