@@ -76,7 +76,8 @@ class Bot(object):
                 logger.info(f'Mode {mode_name} is rate limited')
                 continue
 
-            mode_object = getattr(serverless_twitter_bot.bot_functions, mode_options["function"])
+            bot_functions = __import__('serverless_twitter_bot.bot_functions', fromlist=[mode_options["function"]])
+            mode_object = getattr(bot_functions, mode_options["function"])
             self.state.update_mode_last_run(mode_name, rate_limit_config["time_fuzz"])
 
             if "recipients" in mode_options:

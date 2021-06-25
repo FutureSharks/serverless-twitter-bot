@@ -14,6 +14,8 @@ First create the zip file containing the code for the Lambda function:
 ./create-aws-lambda-zip.sh
 ```
 
+Edit [terraform.tfvars](terraform.tfvars) to add your values.
+
 Then you can apply the Terraform configuration:
 
 ```

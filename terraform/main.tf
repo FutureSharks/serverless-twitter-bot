@@ -30,7 +30,6 @@ resource "aws_lambda_function" "main" {
       TWITTER_ACCESS_TOKEN_SECRET = var.TWITTER_ACCESS_TOKEN_SECRET
       STATE_S3_BUCKET             = aws_s3_bucket.bot_state.id
       STATE_S3_KEY                = var.bot_name
-      PYTHONPATH                  = "serverless_twitter_bot"
       TWITTER_TEST_MODE           = "0"
     }
   }

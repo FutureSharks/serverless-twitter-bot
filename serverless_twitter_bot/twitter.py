@@ -45,7 +45,15 @@ class Twitter(object):
         if self.test_mode:
             return TweepyTestStatus()
         else:
-            results = self.api.user_timeline(screen_name=user, count=1, exclude_replies=True, include_rts=False)
+            try:
+                results = self.api.user_timeline(screen_name=user, count=1, exclude_replies=True, include_rts=False)
+            except tweepy.TweepError as e:
+                if e.args[0][0]['code'] == 136:
+                    logger.error(f"User {user} has blocked this bot")
+                    return None
+                else:
+                    raise
+
             if results:
                 return results[0]
             else:

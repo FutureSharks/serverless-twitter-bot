@@ -20,7 +20,7 @@ if [ ! -d "python-packages" ]; then
   fi
 fi
 
-zip -q -9 -r lambda.zip bot-config.yaml python-packages/
+zip -q -9 -r lambda.zip bot-config.yaml python-packages/ bot_images/
 cd ..
 zip -q -9 -r -u terraform/lambda.zip main.py serverless_twitter_bot
 cd -

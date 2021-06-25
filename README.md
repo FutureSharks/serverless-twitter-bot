@@ -94,7 +94,6 @@ pip3 install -r requirements.txt
 You can run it locally without AWS Lambda like this:
 
 ```
-export PYTHONPATH=serverless_twitter_bot
 python3 main.py
 ```
 
@@ -121,12 +120,6 @@ You can run a test invocation from the AWS Lambda console tab `Test`, the payloa
 The Terraform code has a `enable_schedule` variable to enable a schedule for running the AWS Lambda function.
 
 ## Running tests
-
-First, adjust an env var:
-
-```
-export PYTHONPATH=serverless_twitter_bot
-```
 
 To run all tests, from root of repo run:
 
