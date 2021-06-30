@@ -10,12 +10,6 @@ from serverless_twitter_bot import list_files, load_image_file, select_new_rando
 from PIL import Image, ImageOps
 
 
-# disable PIL debug logs
-pil_logger = logging.getLogger('PIL')
-pil_logger.setLevel(logging.INFO)
-matplotlib_logger = logging.getLogger('matplotlib')
-matplotlib_logger.setLevel(logging.INFO)
-
 logger = logging.getLogger()
 
 

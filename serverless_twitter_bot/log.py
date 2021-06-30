@@ -26,5 +26,6 @@ def create_logger(suppress_package_logs=True):
         logging.getLogger('tweepy').setLevel(logging.CRITICAL)
         logging.getLogger('requests_oauthlib').setLevel(logging.CRITICAL)
         logging.getLogger('oauthlib').setLevel(logging.CRITICAL)
+        logging.getLogger('matplotlib').setLevel(logging.INFO)
 
     return logger
