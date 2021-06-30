@@ -14,7 +14,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
     recent_tweet = api.get_most_recent_tweet(recipient)
 
     # check tweet age
-    age = datetime.datetime.now() - recent_tweet.created_at
+    age = datetime.datetime.utcnow() - recent_tweet.created_at
     if age.seconds > options["config"].get("tweet_age_limit", 108000):
         logger.info(f"Tweet ID {recent_tweet.id} is too old")
         return state

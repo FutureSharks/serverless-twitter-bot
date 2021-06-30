@@ -23,17 +23,17 @@ class TestState(TestCase):
 
         state.update_bot_last_run()
         assert type(state.state["last_run"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["last_run"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["last_run"])
         assert delta.seconds < 1
 
         state.update_mode_last_run(mode="mode_1")
         assert type(state.state["modes"]["mode_1"]["last_run"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["modes"]["mode_1"]["last_run"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["modes"]["mode_1"]["last_run"])
         assert delta.seconds < 1
 
         state.update_user_last_interaction(user="user1")
         assert type(state.state["recipients"]["user1"]["last_interaction"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["recipients"]["user1"]["last_interaction"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["recipients"]["user1"]["last_interaction"])
         assert delta.seconds < 1
 
     def test_mode_state(self):
@@ -112,15 +112,15 @@ class TestState(TestCase):
 
         state.update_bot_last_run(time_fuzz="3h")
         assert type(state.state["last_run"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["last_run"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["last_run"])
         assert delta.seconds >= 1
 
         state.update_mode_last_run(mode="mode_1", time_fuzz="3h")
         assert type(state.state["modes"]["mode_1"]["last_run"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["modes"]["mode_1"]["last_run"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["modes"]["mode_1"]["last_run"])
         assert delta.seconds >= 1
 
         state.update_user_last_interaction(user="user_2", time_fuzz="3h")
         assert type(state.state["recipients"]["user_2"]["last_interaction"]) == str
-        delta = datetime.datetime.now() - str_to_datetime(state.state["recipients"]["user_2"]["last_interaction"])
+        delta = datetime.datetime.utcnow() - str_to_datetime(state.state["recipients"]["user_2"]["last_interaction"])
         assert delta.seconds >= 1

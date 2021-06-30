@@ -25,7 +25,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
         logger.info(f"No recent tweet for user {recipient}")
         return state
 
-    recent_tweet_age = datetime.datetime.now() - recent_tweet.created_at
+    recent_tweet_age = datetime.datetime.utcnow() - recent_tweet.created_at
     if recent_tweet_age.seconds > 10800:
         logger.info(f"Recent tweet too old for tweet ID {recent_tweet.id}, user {recipient}")
         return state
@@ -51,7 +51,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
             logger.debug(f"Default profile image for tweet ID {reply.id}, user {reply.user.screen_name}")
             continue
 
-        age = datetime.datetime.now() - reply.created_at
+        age = datetime.datetime.utcnow() - reply.created_at
         if age.seconds > 10800:
             logger.debug(f"Tweet too old for tweet ID {reply.id}, user {reply.user.screen_name}")
             continue
