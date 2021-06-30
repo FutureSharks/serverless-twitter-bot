@@ -25,8 +25,8 @@ class Twitter(object):
                 self.auth,
                 wait_on_rate_limit=True,
                 wait_on_rate_limit_notify=True,
-                retry_count=5,
-                retry_delay=10,
+                retry_count=3,
+                retry_delay=2,
             )
             if not self.test_api():
                 raise("Twitter API not working")
