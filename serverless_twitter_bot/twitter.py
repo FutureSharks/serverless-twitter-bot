@@ -4,6 +4,7 @@ import os
 import tweepy
 import logging
 from typing import BinaryIO
+from datetime import datetime, timedelta
 
 
 logger = logging.getLogger()
@@ -131,3 +132,4 @@ class TweepyTestStatus(tweepy.models.Status):
         self.retweeted = False
         self.user = tweepy.models.User()
         self.user.screen_name = "test_user"
+        self.created_at = datetime.now() - timedelta(hours = 1)
