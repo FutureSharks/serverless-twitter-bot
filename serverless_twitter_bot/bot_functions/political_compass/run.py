@@ -29,6 +29,12 @@ def run(api: object, options: dict, state: dict, recipient: str):
     if "tweeted_text" not in state:
         state["tweeted_text"] = []
 
+    if "tweets_replied_to" not in state:
+        state["tweets_replied_to"] = []
+
+    if recent_tweet.id in state["tweets_replied_to"]:
+        logger.info(f"Already replied to tweet ID {recent_tweet.id}, user {recipient}")
+        return state
 
     # Create the base compass image
     fig = plt.figure(figsize=(17, 17))
@@ -98,6 +104,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
 
     if result.id:
         state["tweeted_text"] = already_tweeted
+        state["tweets_replied_to"].append(recent_tweet.id)
         logger.info(f"Replied to tweet ID {recent_tweet.id}, reply ID is {result.id}")
     else:
         logger.error(f"Failed to send tweet: {result}")
