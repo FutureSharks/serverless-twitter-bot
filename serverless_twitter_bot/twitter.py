@@ -132,4 +132,4 @@ class TweepyTestStatus(tweepy.models.Status):
         self.retweeted = False
         self.user = tweepy.models.User()
         self.user.screen_name = "test_user"
-        self.created_at = datetime.now() - timedelta(hours = 1)
+        self.created_at = datetime.utcnow() - timedelta(hours = 1)
