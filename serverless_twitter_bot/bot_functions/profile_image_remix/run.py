@@ -96,7 +96,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
     # overlay the images onto the profile image
     for i in range(4):
         overlay_image_bytes = load_image_file(images[i])
-        overlay_image = Image.open(overlay_image_bytes)
+        overlay_image = Image.open(overlay_image_bytes).convert("RGBA")
         overlay_image.thumbnail((400, 400), Image.ANTIALIAS)
         try:
             im.paste(overlay_image, image_locations[i], overlay_image)
