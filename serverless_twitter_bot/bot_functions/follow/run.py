@@ -28,7 +28,7 @@ def run(api: object, options: dict, state: dict, recipient: str):
 
     replies = Cursor(api.api.search, q='to:{} filter:replies conversation_id:{}'.format(recipient, recent_tweet.id), tweet_mode='extended').items()
 
-    for i in range(5):
+    for i in range(20):
         try:
             reply = replies.next()
         except StopIteration:
