@@ -59,6 +59,11 @@ class Bot(object):
         if config == None:
             return default_blank_config
         else:
+            if "type" in config:
+                if config["type"] not in ["per_recipient", "per_mode"]:
+                    logger.error(f'Rate limit type {config["type"]} is not valid')
+                    raise
+
             return merge({}, default_blank_config, config)
 
     def run_modes(self):

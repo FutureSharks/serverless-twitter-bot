@@ -4,6 +4,7 @@ import os
 import tweepy
 import logging
 from typing import BinaryIO
+from datetime import datetime, timedelta
 
 
 logger = logging.getLogger()
@@ -25,8 +26,8 @@ class Twitter(object):
                 self.auth,
                 wait_on_rate_limit=True,
                 wait_on_rate_limit_notify=True,
-                retry_count=5,
-                retry_delay=10,
+                retry_count=3,
+                retry_delay=2,
             )
             if not self.test_api():
                 raise("Twitter API not working")
@@ -131,3 +132,4 @@ class TweepyTestStatus(tweepy.models.Status):
         self.retweeted = False
         self.user = tweepy.models.User()
         self.user.screen_name = "test_user"
+        self.created_at = datetime.utcnow() - timedelta(hours = 1)

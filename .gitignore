@@ -138,3 +138,7 @@ python-packages
 terrform-remote-state.tf
 .terraform.lock.hcl
 *tfstate*
+
+/bot-config.yaml
+*.ipynb
+/bot_images

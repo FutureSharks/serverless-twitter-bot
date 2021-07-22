@@ -56,9 +56,9 @@ class State(object):
             if self._override_current_time:
                 return self._override_current_time
             else:
-                return datetime.datetime.now()
+                return datetime.datetime.utcnow()
         else:
-            return datetime.datetime.now()
+            return datetime.datetime.utcnow()
 
     def load_s3_state(self):
         self.state = self._generate_defult_state()
